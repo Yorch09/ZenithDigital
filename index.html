@@ -146,14 +146,14 @@
                                 <section className="relative h-[600px] flex items-center justify-center overflow-hidden bg-slate-900">
                                     <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900 opacity-90"></div>
                                     <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                                        <div class="flex items-center justify-center h-screen">
-                                          
-                                            <img src="logo.png" alt="Zenith" class="h-32 w-auto" />
                                         
+                                        {/* Usamos un contenedor flexible centrado con margen abajo (mb-6) en lugar de h-screen */}
+                                        <div className="flex justify-center items-center mb-6">
+                                             <img src="logo.png" alt="Zenith Digital" className="h-32 w-auto object-contain" />
                                         </div>
+
                                         <span className="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4 block">Innovación y Rendimiento</span>
                                         
-                                        {/* AQUÍ VA TU ESLOGAN PRINCIPAL */}
                                         <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
                                             Technology at <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Heights</span>
                                         </h1>
