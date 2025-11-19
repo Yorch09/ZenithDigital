@@ -101,17 +101,9 @@
                             <div className="flex justify-between items-center h-20">
                                 {/* Logo */}
                                 <div className="flex-shrink-0 cursor-pointer flex items-center gap-2" onClick={() => navigateTo('home')}>
-                                    
-                                    {/* AQUÍ VA TU LOGO DE LA BARRA DE NAVEGACIÓN */}
-                                    {/* Opción 1: Texto con icono CSS */}
-                                    <div className={`w-8 h-8 rounded-sm flex items-center justify-center font-bold text-xl ${activeSection === 'prime' || scrolled ? 'bg-purple-600' : 'bg-blue-600'} text-white`}>
-                                        Z
-                                    </div>
-                                    <span className="font-bold text-2xl tracking-tighter">ZENITH DIGITAL</span>
-                                    
-                                    {/* Opción 2: Imagen (Descomenta y usa esto si tienes archivo)
+                                   
                                     <img src="logo.png" alt="Zenith" className="h-10 w-auto" />
-                                    */}
+                                    
                                 </div>
 
                                 {/* Desktop Menu */}
@@ -363,7 +355,11 @@
                                 <div className="flex items-center gap-2 text-white mb-4">
                                     
                                     {/* AQUÍ VA TU LOGO DEL FOOTER */}
-                                    <div className="w-6 h-6 bg-blue-600 rounded-sm flex items-center justify-center font-bold text-xs">Z</div>
+                                    <div className="w-6 h-6 bg-blue-600 rounded-sm flex items-center justify-center font-bold text-xs">
+
+                                        <img src="logo.png" alt="Zenith" className="h-10 w-auto" />
+                                        
+                                    </div>
                                     <span className="font-bold text-lg">ZENITH DIGITAL</span>
                                     
                                 </div>
