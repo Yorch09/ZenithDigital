@@ -21,6 +21,9 @@
                         zenithBlue: '#2563eb',
                         zenithPurple: '#9333ea',
                     },
+                    fontFamily: {
+                        serif: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
+                    },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
@@ -43,6 +46,7 @@
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .newspaper-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
     </style>
 </head>
 <body class="bg-white text-slate-800 antialiased">
@@ -62,7 +66,8 @@
             Facebook: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>,
             Linkedin: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>,
             Users: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>,
-            Target: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            Target: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>,
+            Newspaper: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>
         };
 
         const { useState, useEffect } = React;
@@ -121,6 +126,7 @@
                                     <button onClick={() => navigateTo('prime')} className={`transition-colors font-medium ${activeSection === 'prime' ? 'text-purple-400' : 'hover:text-purple-400'}`}>PrimeLine</button>
                                     <button onClick={() => navigateTo('eco')} className={`transition-colors font-medium ${activeSection === 'eco' ? 'text-teal-500' : 'hover:text-teal-500'}`}>EcoLine</button>
                                     <button onClick={() => navigateTo('about')} className={`transition-colors font-medium ${activeSection === 'about' ? 'text-blue-500' : 'hover:text-blue-500'}`}>Sobre Nosotros</button>
+                                    <button onClick={() => navigateTo('news')} className={`transition-colors font-medium ${activeSection === 'news' ? 'text-blue-500' : 'hover:text-blue-500'}`}>Noticias</button>
                                     <button onClick={() => navigateTo('support')} className={`transition-colors font-medium ${activeSection === 'support' ? 'text-blue-500' : 'hover:text-blue-500'}`}>Soporte</button>
                                     <button className={`px-5 py-2 rounded-full font-bold transition-all ${activeSection === 'prime' ? 'bg-purple-600 hover:bg-purple-700' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}>Tienda Online</button>
                                 </div>
@@ -136,6 +142,7 @@
                                 <button onClick={() => navigateTo('prime')} className="text-left py-2 border-b border-slate-700 text-purple-400 font-bold">PrimeLine</button>
                                 <button onClick={() => navigateTo('eco')} className="text-left py-2 border-b border-slate-700 text-teal-400 font-bold">EcoLine</button>
                                 <button onClick={() => navigateTo('about')} className="text-left py-2 border-b border-slate-700">Sobre Nosotros</button>
+                                <button onClick={() => navigateTo('news')} className="text-left py-2 border-b border-slate-700">Noticias</button>
                                 <button onClick={() => navigateTo('support')} className="text-left py-2">Soporte</button>
                             </div>
                         )}
@@ -269,10 +276,9 @@
                             </div>
                         )}
 
-                        {/* --- NUEVA SECCIÓN: SOBRE NOSOTROS --- */}
+                        {/* --- SECCIÓN: SOBRE NOSOTROS --- */}
                         {activeSection === 'about' && (
                              <div className="bg-slate-50 min-h-screen animate-fade-in">
-                                {/* Hero de Sobre Nosotros */}
                                 <div className="bg-slate-900 text-white py-24 relative overflow-hidden">
                                     <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
                                     <div className="relative max-w-7xl mx-auto px-4 text-center z-10">
@@ -333,6 +339,93 @@
                                     </div>
                                 </div>
                              </div>
+                        )}
+
+                        {/* --- NUEVA SECCIÓN: NOTICIAS --- */}
+                        {activeSection === 'news' && (
+                            <div className="bg-slate-100 min-h-screen animate-fade-in py-16">
+                                <div className="max-w-6xl mx-auto px-4">
+                                    {/* Header Periódico */}
+                                    <div className="border-b-4 border-black pb-4 mb-12 text-center">
+                                        <h1 className="text-6xl font-serif font-bold text-slate-900 mb-2 tracking-tight">ZENITH NEWS</h1>
+                                        <div className="flex justify-between text-sm uppercase font-bold tracking-widest text-slate-600 border-t border-black pt-2 mt-2">
+                                            <span>Noticias Corporativas</span>
+                                            <span>{new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                            <span>Edición Digital</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Grid de Noticias */}
+                                    <div className="grid lg:grid-cols-3 gap-12">
+                                        
+                                        {/* Artículo Principal (Izquierda - Ocupa 2 columnas) */}
+                                        <div className="lg:col-span-2 space-y-8">
+                                            <article className="bg-white p-8 shadow-sm border border-slate-200">
+                                                <span className="text-blue-600 font-bold uppercase text-xs tracking-wider">RSC & Educación</span>
+                                                <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mt-2 mb-4 leading-tight">
+                                                    Zenith Digital dona equipos a la UAH y lanza un concurso universitario de desarrollo de videojuegos
+                                                </h2>
+                                                <div className="w-full h-64 bg-slate-200 mb-6 flex items-center justify-center">
+                                                    <span className="text-slate-400 font-bold text-lg">[Imagen Institucional UAH]</span>
+                                                </div>
+                                                <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+                                                    <p className="font-bold text-lg mb-4">
+                                                        Zenith Digital ha donado 20 ordenadores profesionales a la Universidad de Alcalá (UAH) para ampliar los recursos del área de Ingeniería y Comunicación.
+                                                    </p>
+                                                    <p className="mb-4">
+                                                        Como parte del acuerdo, se lanzará un concurso de creación de videojuegos dirigido a estudiantes. El objetivo principal de esta iniciativa es impulsar el acceso a tecnología punta y fomentar el talento universitario en un sector en auge.
+                                                    </p>
+                                                    <blockquote className="border-l-4 border-blue-600 pl-4 italic text-slate-600 my-6 bg-slate-50 p-4">
+                                                        “Queremos apoyar a los futuros desarrolladores que serán la próxima generación del sector tecnológico”, expresó la portavoz de la empresa.
+                                                    </blockquote>
+                                                    <p>
+                                                        Esta acción refuerza el compromiso de Zenith Digital con la educación pública y el desarrollo de competencias digitales avanzadas en el entorno académico.
+                                                    </p>
+                                                </div>
+                                            </article>
+                                        </div>
+
+                                        {/* Columna Lateral (Derecha - Ocupa 1 columna) */}
+                                        <div className="space-y-8">
+                                            
+                                            {/* Artículo 2 */}
+                                            <article className="bg-white p-6 shadow-sm border-t-4 border-purple-600">
+                                                <span className="text-purple-600 font-bold uppercase text-xs tracking-wider">Formación</span>
+                                                <h3 className="text-xl font-serif font-bold text-slate-900 mt-2 mb-3">
+                                                    Financiación de nuevos programas universitarios en edición y 3D
+                                                </h3>
+                                                <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+                                                    Zenith Digital financiará dos programas especializados dirigidos a estudiantes de diseño digital. Estos programas incluirán talleres intensivos sobre motores gráficos 3D y software de edición profesional.
+                                                </p>
+                                                <p className="text-sm text-slate-800 italic">
+                                                    “Una industria innovadora necesita profesionales bien formados. Estamos encantados de contribuir al crecimiento educativo del sector”, afirmó la directora de comunicación.
+                                                </p>
+                                            </article>
+
+                                            {/* Separador Visual */}
+                                            <div className="border-t border-b border-slate-300 py-2 text-center">
+                                                <span className="font-serif italic text-slate-500">Publicidad</span>
+                                                <div className="bg-slate-100 p-4 mt-2 text-xs text-slate-400">Espacio reservado para PrimeLine</div>
+                                            </div>
+
+                                            {/* Artículo 3 */}
+                                            <article className="bg-white p-6 shadow-sm border-t-4 border-teal-500">
+                                                <span className="text-teal-600 font-bold uppercase text-xs tracking-wider">Premios</span>
+                                                <h3 className="text-xl font-serif font-bold text-slate-900 mt-2 mb-3">
+                                                    Nace el Premio ZENITH a la Mejor Edición de Vídeo Universitaria
+                                                </h3>
+                                                <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+                                                    Zenith Digital presenta el Premio ZENITH, un galardón anual que premiará al mejor proyecto de edición de vídeo realizado por estudiantes universitarios. El jurado estará compuesto por profesionales del sector audiovisual.
+                                                </p>
+                                                <p className="text-sm text-slate-800 italic">
+                                                    “El Premio ZENITH pretende dar visibilidad a nuevos talentos del mundo audiovisual y fomentar su desarrollo profesional”, señaló la portavoz.
+                                                </p>
+                                            </article>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         )}
 
                         {activeSection === 'support' && (
@@ -414,7 +507,7 @@
                                 <h4 className="text-white font-bold mb-4">Compañía</h4>
                                 <ul className="space-y-2 text-sm">
                                     <li onClick={() => navigateTo('about')} className="hover:text-white cursor-pointer">Sobre Nosotros</li>
-                                    <li className="hover:text-white cursor-pointer">Blog de Tecnología</li>
+                                    <li onClick={() => navigateTo('news')} className="hover:text-white cursor-pointer">Noticias</li>
                                     <li className="hover:text-white cursor-pointer">Carreras</li>
                                 </ul>
                             </div>
