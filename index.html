@@ -27,6 +27,7 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         float: {
@@ -111,7 +112,7 @@
 
             const cartTotal = cart.reduce((total, item) => total + item.price, 0);
 
-            // CATALOGO DE LA TIENDA (PRECIOS ACTUALIZADOS)
+            // CATALOGO DE LA TIENDA
             const shopProducts = [
                 { id: 1, name: "Zenith Prime X1", category: "prime", price: 1699, image: "PrimeLine.png", desc: "Laptop Gaming Extremo, RTX 4090, 32GB RAM" },
                 { id: 2, name: "Zenith EcoBook", category: "eco", price: 699, image: "EcoLine.png", desc: "Ultrabook para estudiantes, batería 12h" },
@@ -121,7 +122,7 @@
                 { id: 6, name: "Zenith Buds", category: "acc", price: 59, image: "EcoBuds.png", desc: "Auriculares con cancelación de ruido" },
             ];
 
-            // Datos informativos (PRECIOS ACTUALIZADOS)
+            // Datos informativos
             const productsInfo = {
                 prime: {
                     title: "PrimeLine",
@@ -158,6 +159,7 @@
                                     <button onClick={() => navigateTo('eco')} className={`transition-colors font-medium ${activeSection === 'eco' ? 'text-teal-500' : 'hover:text-teal-500'}`}>EcoLine</button>
                                     <button onClick={() => navigateTo('about')} className={`transition-colors font-medium ${activeSection === 'about' ? 'text-blue-500' : 'hover:text-blue-500'}`}>Sobre Nosotros</button>
                                     <button onClick={() => navigateTo('news')} className={`transition-colors font-medium ${activeSection === 'news' ? 'text-blue-500' : 'hover:text-blue-500'}`}>Noticias</button>
+                                    <button onClick={() => navigateTo('support')} className={`transition-colors font-medium ${activeSection === 'support' ? 'text-blue-500' : 'hover:text-blue-500'}`}>Soporte</button>
                                     
                                     {/* BOTÓN TIENDA ONLINE */}
                                     <button onClick={() => navigateTo('shop')} className={`px-5 py-2 rounded-full font-bold transition-all flex items-center gap-2 ${activeSection === 'prime' ? 'bg-purple-600 hover:bg-purple-700' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}>
@@ -192,6 +194,7 @@
                                 <button onClick={() => navigateTo('shop')} className="text-left py-2 border-b border-slate-700 font-bold text-blue-400">Tienda Online</button>
                                 <button onClick={() => navigateTo('about')} className="text-left py-2 border-b border-slate-700">Sobre Nosotros</button>
                                 <button onClick={() => navigateTo('news')} className="text-left py-2 border-b border-slate-700">Noticias</button>
+                                <button onClick={() => navigateTo('support')} className="text-left py-2">Soporte</button>
                             </div>
                         )}
                     </nav>
@@ -489,9 +492,9 @@
                                         </div>
                                     </div>
 
-                                    {/* --- PATROCINADORES SECTION --- */}
+                                    {/* --- PARTNERS SECTION --- */}
                                     <div className="mt-20 mb-12 text-center">
-                                        <h2 className="text-3xl font-bold text-slate-900">Nuestros Patrocinios</h2>
+                                        <h2 className="text-3xl font-bold text-slate-900">Nuestros Partners</h2>
                                         <p className="text-slate-500 mt-2">Colaboraciones que definen nuestros valores.</p>
                                     </div>
 
